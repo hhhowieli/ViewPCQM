@@ -1,5 +1,5 @@
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "0, 3, 7"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 import torch
 import torch.nn.functional as F
@@ -102,14 +102,14 @@ class QATrainer(BaseTrainer):
 
         Loss = np.mean(losses)
 
-        # self.logger("Val/PLCC", plcc, self.current_epoch)
-        # self.logger("Val/SROCC", srocc, self.current_epoch)
-        # self.logger("Val/KROCC", krocc, self.current_epoch)
-        # self.logger("Val/LOSS", Loss, self.current_epoch)
+        self.logger("Val/PLCC", plcc, self.current_epoch)
+        self.logger("Val/SROCC", srocc, self.current_epoch)
+        self.logger("Val/KROCC", krocc, self.current_epoch)
+        self.logger("Val/LOSS", Loss, self.current_epoch)
 
-        # self.logger.log("EPOCH[{}] -> PLCC: {:.6f}, SROCC: {:.6f}, KROCC: {:.6f}, RMSE: {:.6f}, LOSS: {:.6f}".format(self.current_epoch, plcc, srocc, krocc, rmse, Loss))
+        self.logger.log("EPOCH[{}] -> PLCC: {:.6f}, SROCC: {:.6f}, KROCC: {:.6f}, RMSE: {:.6f}, LOSS: {:.6f}".format(self.current_epoch, plcc, srocc, krocc, rmse, Loss))
 
-        print("PLCC: {:.6f}, SROCC: {:.6f}, KROCC: {:.6f}, RMSE: {:.6f}, LOSS: {:.6f}".format(plcc, srocc, krocc, rmse, Loss))
+        # print("PLCC: {:.6f}, SROCC: {:.6f}, KROCC: {:.6f}, RMSE: {:.6f}, LOSS: {:.6f}".format(plcc, srocc, krocc, rmse, Loss))
 
         res = {
             "pred": pred,
@@ -203,9 +203,7 @@ if __name__=="__main__":
     parser.add_argument("--cuda", type=bool, default=True)
     parser.add_argument("--train", type=bool, default=False)
     # parser.add_argument("--ckpt_path", type=str, default="/home/lhh/codes/ViewPCQA/version_1/checkpoints.pth.tar")
-    # parser.add_argument("--ckpt_path", type=str, default="/home/lhh/codes/ViewPCQA/logs/version_23/checkpoints.pth.tar")
-    parser.add_argument("--ckpt_path", type=str, default="/home/lhh/codes/ViewPCQA/logs_bak/version_20/checkpoints.pth.tar")
-    # parser.add_argument("--ckpt_path", type=str, default="/home/lhh/codes/ViewPCQA/logs/version_2/checkpoints.pth.tar")
+
 
     # DATA
     parser.add_argument("--train_info", type=str, default="./csvfiles/wpc_data_info/train_5.csv")

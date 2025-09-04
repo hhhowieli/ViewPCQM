@@ -1,8 +1,19 @@
 # ViewPCQM
 
-Official code of &#34;Information Exploration of Projected Views for  Point Cloud Quality Measurement&#34;
+Official code of "Information Exploration of Projected Views for  Point Cloud Quality Measurement"
 
 
+## Get Started
+
+```shell
+pip install -r requirements.txt
+```
+
+then modify the --train_info, --val_info, --image_dir, and execute 
+
+```shell
+python main.py
+```
 
 ## Citation
 

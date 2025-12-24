@@ -1,6 +1,6 @@
 # ViewPCQM
 
-Official code of "Information Exploration of Projected Views for  Point Cloud Quality Measurement"
+Official code of "Information Exploration of Projected Views for  Point Cloud Quality Measurement" [Paper](https://ieeexplore.ieee.org/document/10841467/)
 
 
 ## Get Started
